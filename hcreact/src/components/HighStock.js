@@ -1,19 +1,15 @@
 import React, { Component } from 'react';
-import Highcharts from 'highcharts';
+import Highcharts from 'highcharts/highstock';
 import HighchartsReact from 'highcharts-react-official';
- 
 
-
-class HighChart extends Component {
-
-
+class HighStock extends Component {
   render() {
-    const options = {
-      chart: {
-        type: 'spline'
-      },
+    const options ={
       title: {
-        text: "My Chart"
+        text: "Stock Chart"
+      },
+      xAxis:{
+        type: 'datetime'
       },
       series: [
         {
@@ -30,14 +26,14 @@ class HighChart extends Component {
     }
     return (
       <div>
-        <HighchartsReact 
-          highcharts={Highcharts} 
-          options={options}
-          // constructorType={'stockChart'}
-      />
+        <HighchartsReact
+        highcharts = {Highcharts}
+        options={options}
+        constructorType={'stockChart'}
+        />
       </div>
     )
   }
 }
 
-export default HighChart;
+export default HighStock;
