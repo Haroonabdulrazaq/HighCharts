@@ -18,7 +18,7 @@ class HighChart extends Component {
       legend:{enabled: true},
       series: [
         {
-          name: 'Corona virus cases',
+          name: 'Total cases',
           data: [
             0,1, 2, 1, 4, 3, 6,
             1, 2, 1, 4, 3, 6,1, 2, 1, 4, 3, 6,1, 2, 1, 4, 3, 6,
@@ -29,7 +29,7 @@ class HighChart extends Component {
           ]
         },
         {
-          type: 'area',
+          type: 'line',
           name: 'Critical cases',
           data: [
             1,2,4,7,9,3,5,0,1,4,6,8,7,3,7,
