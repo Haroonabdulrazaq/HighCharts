@@ -5,6 +5,9 @@ import HighchartsReact from 'highcharts-react-official';
 class HighStock extends Component {
   render() {
     const options ={
+      chart: {
+        zoomType: 'x'
+      },
       title: {
         text: "Stock Chart"
       },
