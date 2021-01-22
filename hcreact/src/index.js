@@ -1,21 +1,9 @@
 import React from 'react';
 import { render } from 'react-dom';
-import Highcharts from 'highcharts/highstock';
-import HighchartsReact from 'highcharts-react-official';
+// import Highcharts from 'highcharts/highstock';
+// import HighchartsReact from 'highcharts-react-official';
+import HighChart from './components/HighChart';
 
-let options ={
-  // chart:{
-  //   type: 'spline'
-  // },
-  title: {
-    text: 'my Chart'
-  },
-  series: [
-   { 
-     data: [1, 2, 1, 4, 3, 6]
-  }
-  ]
-};
 // ,1, 2, 1, 4, 3, 6,
 // 1, 2, 1, 4, 3, 6,1, 2, 1, 4, 3, 6,1, 2, 1, 4, 3, 6,
 // 1, 2, 1, 4, 3, 6,1, 2, 1, 4, 3, 6,1, 2, 1, 4, 3, 6,
@@ -26,11 +14,7 @@ let options ={
 const App = () => {
   return (
     <div>
-      <HighchartsReact 
-          highcharts={Highcharts} 
-          options={options}
-          constructorType={'stockChart'}
-      />
+      <HighChart />
     </div>
   )
 }
