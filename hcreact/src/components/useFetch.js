@@ -5,6 +5,7 @@ const useFetch = (url) => {
 
   let [total, setTotal] = useState([]);
   let [death, setDeath] = useState([]);
+  let [labelArray, setLabelArray] = useState([]);
   let [isLoading, setIsLoading] = useState(true);
 
   const fetchData = async()=> {
@@ -20,11 +21,12 @@ const useFetch = (url) => {
       if(response.status >= 200 || response.staus <=299){  // Treating Data for Bar, Area and Line Chart, 
         response = await response.json()
          let data = response["data"] 
-         console.log(data)
-         let dataArray =[]
+         let dataArray  =[]
          let totalcases =[]
          let deathcases =[]
          dataArray = Object.keys(data)
+        //  let entries = Object.entries(data)
+        //  console.log(entries);
 
           for(let i=0; i < dataArray.length; i++ ){ 
             if(data.hasOwnProperty(dataArray[i])){
@@ -35,6 +37,7 @@ const useFetch = (url) => {
 
          setTotal(totalcases)
          setDeath(deathcases)
+         setLabelArray([...dataArray])
          setIsLoading(false)
 
      }else{
@@ -44,8 +47,6 @@ const useFetch = (url) => {
     }catch(error){
       console.error(error)
     }
-
-    
   }
 
   useEffect(() => {
@@ -53,6 +54,6 @@ const useFetch = (url) => {
   },[url])
 
 
-  return {isLoading, death, total}
+  return {isLoading, death, total, labelArray}
 }
 export default useFetch; 
