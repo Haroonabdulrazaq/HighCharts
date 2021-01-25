@@ -10,19 +10,14 @@ const HighChart =(props)=>{
  
   let url = 'https://coronavirus-map.p.rapidapi.com/v1/spots/region?region=china';
 
-  const {isLoading, data} = useFetch(url)
+  const {isLoading, death, total} = useFetch(url)
   if(isLoading){
     console.log("isloading")
   }
 
-  console.log(data)
- 
-
-
- 
     const options = {
       chart: {
-        type: 'spline'
+        type: 'column'
       },
       title: {
         text: "My Chart"
@@ -31,25 +26,12 @@ const HighChart =(props)=>{
       series: [
         {
           name: 'Total cases',
-          data: [
-            0,1, 2, 1, 4, 3, 6,
-            1, 2, 1, 4, 3, 6,1, 2, 1, 4, 3, 6,1, 2, 1, 4, 3, 6,
-            1, 2, 1, 4, 3, 6,1, 2, 1, 4, 3, 6,1, 2, 1, 4, 3, 6,
-            1, 2, 1, 4, 3, 6,1, 2, 1, 1, 3, 3, 1, 2, 1, 4, 3, 6,
-            1, 2, 1, 4, 3, 6,1, 2, 1, 4, 3, 6,1, 2, 1, 4, 3, 6,
-            1, 2, 1, 4, 3, 6,1, 2, 1, 4, 3, 6,1, 2, 1, 4, 3, 4
-          ]
+          data: [...total]
         },
         {
           type: 'line',
-          name: 'Critical cases',
-          data: [
-            1,2,4,7,9,3,5,0,1,4,6,8,7,3,7,
-            12,45,7,23,55,78,1,4,45,4,8,8,2,44,5,7,1,21,5,4,
-            12,45,7,23,55,78,1,4,45,4,8,8,2,44,5,7,1,21,5,4,
-            12,45,7,23,55,78,1,4,45,4,8,8,2,44,5,7,1,21,5,4,
-            12,45,7,23,55,78,1,4,45,4,8,8,2,44,5,7,1,21,5,4,
-          ]
+          name: 'Death cases',
+          data: [...death]
         }
       ]
     }

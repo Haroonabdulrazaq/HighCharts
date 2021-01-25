@@ -2,29 +2,55 @@ import {useState, useEffect} from 'react';
 
 const useFetch = (url) => {
 
-  let [data, setData] = useState([]);
-  let [isLoading, setIsLOading] = useState(true);
+  let [total, setTotal] = useState([]);
+  let [death, setDeath] = useState([]);
+  let [isLoading, setIsLoading] = useState(true);
 
   const fetchData = async()=> {
-    let response = await fetch(url, {  // Making API call
-      "method": "GET",
-      "headers": {
-        "x-rapidapi-key": '5fbec538d7msh9e5378e39f8e570p164c8ajsnf8c7f46f4df4', //Remember to hide API key
-        "x-rapidapi-host": "coronavirus-map.p.rapidapi.com"
-      }
-    })
-    let data = await response.json()
+    try{
+      let response = await fetch(url, {  // Making API call
+        "method": "GET",
+        "headers": {
+          "x-rapidapi-key": , //Remember to hide API key
+          "x-rapidapi-host": "coronavirus-map.p.rapidapi.com"
+        }
+      }) 
+      
+      if(response.status >= 200 || response.staus <=299){  // Treating Data for Bar, Area and Line Chart, 
+        response = await response.json()
+         let data = response["data"] 
+         let dataArray =[]
+         let totalcases =[]
+         let deathcases =[]
+         dataArray = Object.keys(data)
 
-    setData(data)
-    setIsLOading(false)
+          for(let i=0; i < dataArray.length; i++ ){ 
+            if(data.hasOwnProperty(dataArray[i])){
+                totalcases.unshift( Number(data[dataArray[i]]["total_cases"]) ) 
+                deathcases.unshift( Number(data[dataArray[i]]["total_cases"]) ) 
+            }
+          }
+
+         setTotal(totalcases)
+         setDeath(deathcases)
+         setIsLoading(false)
+
+     }else{
+        setIsLoading(true)
+       throw new Error("Error Bad request, Please try again")
+     }
+    }catch(error){
+      console.error(error)
+    }
+
+    
   }
+
   useEffect(() => {
     fetchData()
-  })
+  },[url])
 
 
-  return {isLoading, data}
- 
+  return {isLoading, death, total}
 }
-
 export default useFetch; 
