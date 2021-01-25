@@ -1,13 +1,25 @@
-import React, { Component } from 'react';
+import React from 'react';
 import Highcharts from 'highcharts';
 import HighchartsReact from 'highcharts-react-official';
+import useFetch  from './useFetch';
  
 
 
-class HighChart extends Component {
+const HighChart =(props)=>{
+ 
+ 
+  let url = 'https://coronavirus-map.p.rapidapi.com/v1/spots/region?region=china';
+
+  const {isLoading, data} = useFetch(url)
+  if(isLoading){
+    console.log("isloading")
+  }
+
+  console.log(data)
+ 
 
 
-  render() {
+ 
     const options = {
       chart: {
         type: 'spline'
@@ -51,6 +63,6 @@ class HighChart extends Component {
       </div>
     )
   }
-}
+ 
 
 export default HighChart;
