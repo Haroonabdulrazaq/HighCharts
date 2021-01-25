@@ -12,10 +12,10 @@ const HighChart =(props)=>{
 
   const {isLoading, death, total, labelArray} = useFetch(url)
 
-   let xValue =[]
-   for(let i=0; i < labelArray.length; i++){
-      xValue.push(labelArray[i])
-   }
+  //  let xValue =[]
+  //  for(let i=0; i < labelArray.length; i++){
+  //     xValue.push(labelArray[i])
+  //  }
   
     const options = {
       chart: {
@@ -33,7 +33,7 @@ const HighChart =(props)=>{
         }
       },  
       xAxis: {
-        categories: xValue
+        categories: labelArray
       },
       tooltip: {
         shared: true,
