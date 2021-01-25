@@ -1,4 +1,5 @@
 import {useState, useEffect} from 'react';
+require('dotenv').config()
 
 const useFetch = (url) => {
 
@@ -11,7 +12,7 @@ const useFetch = (url) => {
       let response = await fetch(url, {  // Making API call
         "method": "GET",
         "headers": {
-          "x-rapidapi-key": , //Remember to hide API key
+          "x-rapidapi-key": process.env.REACT_APP_API_KEY, //Remember to hide API key
           "x-rapidapi-host": "coronavirus-map.p.rapidapi.com"
         }
       }) 
