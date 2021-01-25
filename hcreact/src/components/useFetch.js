@@ -20,6 +20,7 @@ const useFetch = (url) => {
       if(response.status >= 200 || response.staus <=299){  // Treating Data for Bar, Area and Line Chart, 
         response = await response.json()
          let data = response["data"] 
+         console.log(data)
          let dataArray =[]
          let totalcases =[]
          let deathcases =[]
@@ -28,7 +29,7 @@ const useFetch = (url) => {
           for(let i=0; i < dataArray.length; i++ ){ 
             if(data.hasOwnProperty(dataArray[i])){
                 totalcases.unshift( Number(data[dataArray[i]]["total_cases"]) ) 
-                deathcases.unshift( Number(data[dataArray[i]]["total_cases"]) ) 
+                deathcases.unshift( Number(data[dataArray[i]]["deaths"]) ) 
             }
           }
 

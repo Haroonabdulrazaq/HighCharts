@@ -11,9 +11,7 @@ const HighChart =(props)=>{
   let url = 'https://coronavirus-map.p.rapidapi.com/v1/spots/region?region=china';
 
   const {isLoading, death, total} = useFetch(url)
-  if(isLoading){
-    console.log("isloading")
-  }
+  
 
     const options = {
       chart: {
@@ -29,13 +27,18 @@ const HighChart =(props)=>{
           data: [...total]
         },
         {
-          type: 'line',
+          type: 'column',
           name: 'Death cases',
           data: [...death]
         }
       ]
     }
-    return (
+    if(isLoading){
+      return <div>
+        <h2>Loading...</h2>
+        </div>
+     }
+    return (      
       <div>
         <HighchartsReact 
           highcharts={Highcharts} 
