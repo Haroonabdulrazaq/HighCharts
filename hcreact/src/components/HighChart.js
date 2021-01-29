@@ -41,22 +41,20 @@ const HighChart =(props)=>{
       },
       legend:{
         enabled: true,
-        layout: 'vertical',
-        align: 'right',
-        verticalAlign: 'middle'
+        // layout: 'vertical',
+        // align: 'right',
+        // verticalAlign: 'middle'
       }, 
       series: [
         {
-          type: 'area',
+          type: 'spline',
           name: 'Total cases',
           data: [...total]
-          // data: [1,2,4,6,2,3,4,7,9,6,10,8]
         },
         {
-          type: 'area',
+          type: 'spline',
           name: 'Death cases',
-          data: [...death], 
-          // data: [7,1,3,0,6,8,9,1,2,7,8,5],
+          data: [...death],
           color: 'rgba(0,148,16,0.2)'
           // marker:{ enabled: false}
         }
