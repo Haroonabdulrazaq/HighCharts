@@ -51,7 +51,7 @@ const useFetch = (url) => {
 
   useEffect(() => {
     fetchData()
-  },[url])
+  })
 
 
   return {isLoading, death, total, labelArray}

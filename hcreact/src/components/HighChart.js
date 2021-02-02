@@ -2,12 +2,9 @@ import React from 'react';
 import Highcharts from 'highcharts';
 import HighchartsReact from 'highcharts-react-official';
 import useFetch  from './useFetch';
- 
 
 
-const HighChart =(props)=>{
- 
- 
+const HighChart =(props)=>{ 
   let url = 'https://coronavirus-map.p.rapidapi.com/v1/spots/region?region=china';
 
   const {isLoading, death, total, labelArray} = useFetch(url)
@@ -40,7 +37,7 @@ const HighChart =(props)=>{
         crosshairs: true
       },
       legend:{
-        enabled: true,
+        // enabled: true,
         // layout: 'vertical',
         // align: 'right',
         // verticalAlign: 'middle'
@@ -65,7 +62,9 @@ const HighChart =(props)=>{
         <h2>Loading...</h2>
         </div>
      }
-    return (      
+    return (  
+      <>    
+       <h1>HighChart</h1>
       <div>
         <HighchartsReact 
           highcharts={Highcharts} 
@@ -73,6 +72,7 @@ const HighChart =(props)=>{
           // constructorType={'stockChart'}
       />
       </div>
+      </>
     )
   }
  
