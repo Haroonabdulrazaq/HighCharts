@@ -62,9 +62,7 @@ const HighChart =(props)=>{
         <h2>Loading...</h2>
         </div>
      }
-    return (  
-      <>    
-       <h1>HighChart</h1>
+    return ( 
       <div>
         <HighchartsReact 
           highcharts={Highcharts} 
@@ -72,7 +70,6 @@ const HighChart =(props)=>{
           // constructorType={'stockChart'}
       />
       </div>
-      </>
     )
   }
  

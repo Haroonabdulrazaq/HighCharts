@@ -34,7 +34,7 @@ const useFetch = (url) => {
                 deathcases.unshift( Number(data[dataArray[i]]["deaths"]) ) 
             }
           }
-
+          console.log(dataArray)
          setTotal(totalcases)
          setDeath(deathcases)
          setLabelArray([...dataArray])
@@ -51,7 +51,7 @@ const useFetch = (url) => {
 
   useEffect(() => {
     fetchData()
-  })
+  }, [])
 
 
   return {isLoading, death, total, labelArray}
